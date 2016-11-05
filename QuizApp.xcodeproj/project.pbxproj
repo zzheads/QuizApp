@@ -14,6 +14,11 @@
 		A65EDD071DCDCF5300EF26CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD051DCDCF5300EF26CA /* LaunchScreen.storyboard */; };
 		A65EDD121DCDCF5300EF26CA /* QuizAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EDD111DCDCF5300EF26CA /* QuizAppTests.swift */; };
 		A65EDD1D1DCDCF5300EF26CA /* QuizAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EDD1C1DCDCF5300EF26CA /* QuizAppUITests.swift */; };
+		A65EDD301DCE010700EF26CA /* completed.wav in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD2C1DCE010700EF26CA /* completed.wav */; };
+		A65EDD311DCE010700EF26CA /* failure.wav in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD2D1DCE010700EF26CA /* failure.wav */; };
+		A65EDD321DCE010700EF26CA /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD2E1DCE010700EF26CA /* start.wav */; };
+		A65EDD331DCE010700EF26CA /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD2F1DCE010700EF26CA /* success.wav */; };
+		A65EDD351DCE012900EF26CA /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EDD341DCE012900EF26CA /* Sounds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +52,11 @@
 		A65EDD181DCDCF5300EF26CA /* QuizAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65EDD1C1DCDCF5300EF26CA /* QuizAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAppUITests.swift; sourceTree = "<group>"; };
 		A65EDD1E1DCDCF5300EF26CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A65EDD2C1DCE010700EF26CA /* completed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = completed.wav; path = ../../../Downloads/completed.wav; sourceTree = "<group>"; };
+		A65EDD2D1DCE010700EF26CA /* failure.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = failure.wav; path = ../../../Downloads/failure.wav; sourceTree = "<group>"; };
+		A65EDD2E1DCE010700EF26CA /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = start.wav; path = ../../../Downloads/start.wav; sourceTree = "<group>"; };
+		A65EDD2F1DCE010700EF26CA /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = success.wav; path = ../../../Downloads/success.wav; sourceTree = "<group>"; };
+		A65EDD341DCE012900EF26CA /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +107,17 @@
 		A65EDCFB1DCDCF5300EF26CA /* QuizApp */ = {
 			isa = PBXGroup;
 			children = (
+				A65EDD2C1DCE010700EF26CA /* completed.wav */,
+				A65EDD2D1DCE010700EF26CA /* failure.wav */,
+				A65EDD2E1DCE010700EF26CA /* start.wav */,
+				A65EDD2F1DCE010700EF26CA /* success.wav */,
 				A65EDCFC1DCDCF5300EF26CA /* AppDelegate.swift */,
 				A65EDCFE1DCDCF5300EF26CA /* ViewController.swift */,
 				A65EDD001DCDCF5300EF26CA /* Main.storyboard */,
 				A65EDD031DCDCF5300EF26CA /* Assets.xcassets */,
 				A65EDD051DCDCF5300EF26CA /* LaunchScreen.storyboard */,
 				A65EDD081DCDCF5300EF26CA /* Info.plist */,
+				A65EDD341DCE012900EF26CA /* Sounds.swift */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -236,7 +251,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A65EDD071DCDCF5300EF26CA /* LaunchScreen.storyboard in Resources */,
+				A65EDD321DCE010700EF26CA /* start.wav in Resources */,
+				A65EDD311DCE010700EF26CA /* failure.wav in Resources */,
+				A65EDD331DCE010700EF26CA /* success.wav in Resources */,
 				A65EDD041DCDCF5300EF26CA /* Assets.xcassets in Resources */,
+				A65EDD301DCE010700EF26CA /* completed.wav in Resources */,
 				A65EDD021DCDCF5300EF26CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65EDD351DCE012900EF26CA /* Sounds.swift in Sources */,
 				A65EDCFF1DCDCF5300EF26CA /* ViewController.swift in Sources */,
 				A65EDCFD1DCDCF5300EF26CA /* AppDelegate.swift in Sources */,
 			);
@@ -512,6 +532,7 @@
 				A65EDD231DCDCF5300EF26CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A65EDD241DCDCF5300EF26CA /* Build configuration list for PBXNativeTarget "QuizAppTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +541,7 @@
 				A65EDD261DCDCF5300EF26CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A65EDD271DCDCF5300EF26CA /* Build configuration list for PBXNativeTarget "QuizAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +550,7 @@
 				A65EDD291DCDCF5300EF26CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

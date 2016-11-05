@@ -22,18 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample question Sample question Sample question Sample question Sample question Sample question" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-Ul-BYg">
-                                <rect key="frame" x="20" y="128" width="335" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="4xE-YK-Ibb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFV-Np-71g">
                                 <rect key="frame" x="36" y="248" width="303" height="50"/>
-                                <color key="backgroundColor" red="0.040373869240283966" green="0.47578203678131104" blue="0.5894477367401123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.039215686270000001" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="fDL-rB-klP"/>
                                 </constraints>
@@ -59,6 +50,18 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Choice 4"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-bd-3Fb">
+                                <rect key="frame" x="36" y="488" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.0032010520808398724" green="0.57485461235046387" blue="0.52971369028091431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0v8-PW-M5A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Play again?"/>
+                                <connections>
+                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="84u-Qj-ufm"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNu-Ca-PNA">
                                 <rect key="frame" x="36" y="308" width="303" height="50"/>
                                 <color key="backgroundColor" red="0.040373869239999999" green="0.47578203679999997" blue="0.58944773669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,15 +71,15 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Choice 2"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-bd-3Fb">
-                                <rect key="frame" x="36" y="488" width="303" height="50"/>
-                                <color key="backgroundColor" red="0.0032010520808398724" green="0.57485461235046387" blue="0.52971369028091431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample question Sample question Sample question Sample question Sample question Sample question" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-Ul-BYg">
+                                <rect key="frame" x="20" y="128" width="335" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0v8-PW-M5A"/>
+                                    <constraint firstAttribute="height" constant="100" id="4xE-YK-Ibb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.031548917293548584" green="0.16887250542640686" blue="0.24206548929214478" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,6 +104,14 @@
                             <constraint firstItem="dm4-Sj-boZ" firstAttribute="top" secondItem="HNu-Ca-PNA" secondAttribute="bottom" constant="10" id="zN0-NZ-uA9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="choiceButton1" destination="YFV-Np-71g" id="X2n-Fs-Kub"/>
+                        <outlet property="choiceButton2" destination="HNu-Ca-PNA" id="iZ6-Oq-T6i"/>
+                        <outlet property="choiceButton3" destination="dm4-Sj-boZ" id="Gnk-oz-9kl"/>
+                        <outlet property="choiceButton4" destination="prc-J5-wuN" id="Sg5-fn-f5Q"/>
+                        <outlet property="playAgainButton" destination="tsn-bd-3Fb" id="x3c-nM-2oO"/>
+                        <outlet property="questionLabel" destination="zXg-Ul-BYg" id="oPp-rX-ez1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
