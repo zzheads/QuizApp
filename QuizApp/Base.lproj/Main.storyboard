@@ -30,6 +30,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Choice 1"/>
+                                <connections>
+                                    <action selector="choice1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guS-hh-6GY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-Sj-boZ">
                                 <rect key="frame" x="36" y="368" width="303" height="50"/>
@@ -39,6 +42,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Choice 3"/>
+                                <connections>
+                                    <action selector="choice3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQC-Au-2m3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prc-J5-wuN">
                                 <rect key="frame" x="36" y="428" width="303" height="50"/>
@@ -49,6 +55,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Choice 4"/>
+                                <connections>
+                                    <action selector="choice4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Ht-SB-kCt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-bd-3Fb">
                                 <rect key="frame" x="36" y="488" width="303" height="50"/>
@@ -70,6 +79,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Choice 2"/>
+                                <connections>
+                                    <action selector="choice2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5gS-VF-XfL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample question Sample question Sample question Sample question Sample question Sample question" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-Ul-BYg">
                                 <rect key="frame" x="20" y="128" width="335" height="100"/>
