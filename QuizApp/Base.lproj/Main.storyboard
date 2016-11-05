@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,90 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample question Sample question Sample question Sample question Sample question Sample question" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-Ul-BYg">
+                                <rect key="frame" x="20" y="128" width="335" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4xE-YK-Ibb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFV-Np-71g">
+                                <rect key="frame" x="36" y="248" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.040373869240283966" green="0.47578203678131104" blue="0.5894477367401123" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fDL-rB-klP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Choice 1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-Sj-boZ">
+                                <rect key="frame" x="36" y="368" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.040373869239999999" green="0.47578203679999997" blue="0.58944773669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6aT-NJ-iAB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Choice 3"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prc-J5-wuN">
+                                <rect key="frame" x="36" y="428" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.040373869239999999" green="0.47578203679999997" blue="0.58944773669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="PUW-fg-I3A"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="zb8-Y4-8YC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Choice 4"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNu-Ca-PNA">
+                                <rect key="frame" x="36" y="308" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.040373869239999999" green="0.47578203679999997" blue="0.58944773669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iOa-g1-nfT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Choice 2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-bd-3Fb">
+                                <rect key="frame" x="36" y="488" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.0032010520808398724" green="0.57485461235046387" blue="0.52971369028091431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0v8-PW-M5A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.031548917293548584" green="0.16887250542640686" blue="0.24206548929214478" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="HNu-Ca-PNA" secondAttribute="trailing" constant="20" id="80e-c6-I87"/>
+                            <constraint firstItem="tsn-bd-3Fb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Cwf-Ei-ejz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="prc-J5-wuN" secondAttribute="trailing" constant="20" id="EO6-TT-2t5"/>
+                            <constraint firstItem="HNu-Ca-PNA" firstAttribute="top" secondItem="YFV-Np-71g" secondAttribute="bottom" constant="10" id="FiB-pN-pDI"/>
+                            <constraint firstItem="HNu-Ca-PNA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M6w-j7-C5d"/>
+                            <constraint firstItem="prc-J5-wuN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Npx-Z8-gIR"/>
+                            <constraint firstItem="HNu-Ca-PNA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="XAN-jq-euk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YFV-Np-71g" secondAttribute="trailing" constant="20" id="Yso-Bp-2Ky"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dm4-Sj-boZ" secondAttribute="trailing" constant="20" id="ZiT-kW-9Gf"/>
+                            <constraint firstItem="prc-J5-wuN" firstAttribute="top" secondItem="dm4-Sj-boZ" secondAttribute="bottom" constant="10" id="anM-SS-1Kz"/>
+                            <constraint firstItem="YFV-Np-71g" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="asH-ao-bC1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tsn-bd-3Fb" secondAttribute="trailing" constant="20" id="gL4-HN-W6W"/>
+                            <constraint firstItem="tsn-bd-3Fb" firstAttribute="top" secondItem="prc-J5-wuN" secondAttribute="bottom" constant="10" id="jan-eh-gc4"/>
+                            <constraint firstItem="YFV-Np-71g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="l4V-d3-AyA"/>
+                            <constraint firstItem="zXg-Ul-BYg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="nee-f9-ovp"/>
+                            <constraint firstItem="dm4-Sj-boZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="sV2-T6-5a2"/>
+                            <constraint firstAttribute="trailing" secondItem="zXg-Ul-BYg" secondAttribute="trailing" constant="20" id="uXl-fl-T0g"/>
+                            <constraint firstItem="dm4-Sj-boZ" firstAttribute="top" secondItem="HNu-Ca-PNA" secondAttribute="bottom" constant="10" id="zN0-NZ-uA9"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
 </document>
