@@ -50,5 +50,11 @@ class Quiz {
         }
         return (false, currentTrivia.answer)
     }
+    
+    func restart() {
+        triviaPool = trivias
+        questionAsked = 0
+        rightAnswers = 0
+    }
 }
 

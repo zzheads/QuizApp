@@ -92,13 +92,28 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwa-oR-9h9">
+                                <rect key="frame" x="36" y="548" width="303" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="p8f-9z-JBd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Quit app"/>
+                                <connections>
+                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UZF-g8-Tlf"/>
+                                    <action selector="quitApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NPf-L2-vqH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.031548917293548584" green="0.16887250542640686" blue="0.24206548929214478" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="HNu-Ca-PNA" secondAttribute="trailing" constant="20" id="80e-c6-I87"/>
+                            <constraint firstItem="pwa-oR-9h9" firstAttribute="top" secondItem="tsn-bd-3Fb" secondAttribute="bottom" constant="10" id="BWf-LE-S8f"/>
                             <constraint firstItem="tsn-bd-3Fb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Cwf-Ei-ejz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="prc-J5-wuN" secondAttribute="trailing" constant="20" id="EO6-TT-2t5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pwa-oR-9h9" secondAttribute="trailing" constant="20" id="FTX-sT-DEI"/>
                             <constraint firstItem="HNu-Ca-PNA" firstAttribute="top" secondItem="YFV-Np-71g" secondAttribute="bottom" constant="10" id="FiB-pN-pDI"/>
                             <constraint firstItem="HNu-Ca-PNA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M6w-j7-C5d"/>
                             <constraint firstItem="prc-J5-wuN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Npx-Z8-gIR"/>
@@ -107,6 +122,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="dm4-Sj-boZ" secondAttribute="trailing" constant="20" id="ZiT-kW-9Gf"/>
                             <constraint firstItem="prc-J5-wuN" firstAttribute="top" secondItem="dm4-Sj-boZ" secondAttribute="bottom" constant="10" id="anM-SS-1Kz"/>
                             <constraint firstItem="YFV-Np-71g" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="asH-ao-bC1"/>
+                            <constraint firstItem="pwa-oR-9h9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="dce-SL-GaX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tsn-bd-3Fb" secondAttribute="trailing" constant="20" id="gL4-HN-W6W"/>
                             <constraint firstItem="tsn-bd-3Fb" firstAttribute="top" secondItem="prc-J5-wuN" secondAttribute="bottom" constant="10" id="jan-eh-gc4"/>
                             <constraint firstItem="YFV-Np-71g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="l4V-d3-AyA"/>
@@ -123,6 +139,7 @@
                         <outlet property="choiceButton4" destination="prc-J5-wuN" id="Sg5-fn-f5Q"/>
                         <outlet property="playAgainButton" destination="tsn-bd-3Fb" id="x3c-nM-2oO"/>
                         <outlet property="questionLabel" destination="zXg-Ul-BYg" id="oPp-rX-ez1"/>
+                        <outlet property="quitButton" destination="pwa-oR-9h9" id="OpA-mJ-jOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

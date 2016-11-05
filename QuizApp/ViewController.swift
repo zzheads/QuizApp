@@ -38,13 +38,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var choiceButton4: UIButton!
     
     var buttons: [UIButton] = []
+    let delayInSeconds = 2 // delay when checking answer / showing right one
     
     @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var quitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         playAgainButton.isHidden = true
+        quitButton.isHidden = true
         
         buttons.append(choiceButton1)
         buttons.append(choiceButton2)
@@ -69,6 +72,16 @@ class ViewController: UIViewController {
         choiceButton4.setTitle(quiz.currentTrivia.choices[3], for: UIControlState.normal)
     }
     
+    func showResults() {
+        questionLabel.text = " Questions asked: \(quiz.questionAsked),\n Right answers received: \(quiz.rightAnswers)"
+        for button in buttons {
+            button.isHidden = true
+        }
+        playAgainButton.isHidden = false
+        quitButton.isHidden = false
+        soundCompleted.play()
+    }
+    
     func checkAnswer(answer: Int) {
         let result = quiz.checkAnswer(answer: answer)
         buttonFlash(sender: buttons[result.rightAnswer-1])
@@ -80,14 +93,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playAgain(_ sender: Any) {
+        quiz.restart()
+        playAgainButton.isHidden = true
+        quitButton.isHidden = true
+        for button in buttons {
+            button.isHidden = false
+        }
+        runNextRound()
         soundStart.play()
-        buttonFlash(sender: playAgainButton)
     }
+    
+    @IBAction func quitApp(_ sender: Any) {
+        exit(0)
+    }
+    
 
     @IBAction func choice1(_ sender: Any) {
         checkAnswer(answer: 1)
         if (!quiz.isFinished()) {
             runNextRound()
+        } else {
+            showResults()
         }
     }
     
@@ -95,6 +121,8 @@ class ViewController: UIViewController {
         checkAnswer(answer: 2)
         if (!quiz.isFinished()) {
             runNextRound()
+        } else {
+            showResults()
         }
     }
     
@@ -102,6 +130,8 @@ class ViewController: UIViewController {
         checkAnswer(answer: 3)
         if (!quiz.isFinished()) {
             runNextRound()
+        } else {
+            showResults()
         }
     }
     
@@ -109,6 +139,8 @@ class ViewController: UIViewController {
         checkAnswer(answer: 4)
         if (!quiz.isFinished()) {
             runNextRound()
+        } else {
+            showResults()
         }
     }
     
