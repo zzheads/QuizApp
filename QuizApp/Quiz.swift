@@ -13,19 +13,19 @@ struct Trivia {
     let choices: [String]   // count 3-4
     let answer: Int         // 1-3, 1-4
     var isAnswered: Bool
+    var isAsked: Bool
     
-    init(question: String, choices: [String], answer: Int, isAnswered: Bool = false) {
+    init(question: String, choices: [String], answer: Int, isAnswered: Bool = false, isAsked: Bool = false) {
         self.question = question
         self.choices = choices
         self.answer = answer
         self.isAnswered = isAnswered
-    }
+        self.isAsked = isAsked
+    }    
 }
 
 class Quiz {
     var trivias: [Trivia]
-    var triviaPool: [Trivia]
-    var currentTrivia: Trivia
     var indexOfCurrentTrivia: Int
     var questionAsked = 0
     var rightAnswers = 0
@@ -33,9 +33,7 @@ class Quiz {
     
     init(trivias: [Trivia], numberOfQuestions: Int) {
         self.trivias = trivias
-        self.triviaPool = trivias
         self.indexOfCurrentTrivia = 0
-        self.currentTrivia = trivias[self.indexOfCurrentTrivia]
         self.numberOfQuestions = numberOfQuestions
     }
     
@@ -43,12 +41,16 @@ class Quiz {
         return self.indexOfCurrentTrivia
     }
     
+    func getCurrentTrivia() -> Trivia {
+        return self.trivias[indexOfCurrentTrivia]
+    }
+    
     // setups nextRound of Quiz
     func newRound() {
-        let index = GKRandomSource.sharedRandom().nextInt(upperBound: triviaPool.count)
-        self.indexOfCurrentTrivia = index
-        self.currentTrivia = triviaPool[index]
-        triviaPool.remove(at: index) // remove trivia from triviaPool to avoid repeats
+        repeat {
+            self.indexOfCurrentTrivia = GKRandomSource.sharedRandom().nextInt(upperBound: trivias.count)
+        } while (self.trivias[indexOfCurrentTrivia].isAsked)
+        trivias[indexOfCurrentTrivia].isAsked = true
     }
     
     // checks is Quiz finished yet
@@ -58,24 +60,26 @@ class Quiz {
     
     //skip question
     func skipQuestion() {
-        questionAsked += 1
+        self.trivias[indexOfCurrentTrivia].isAnswered = true
+        self.questionAsked += 1
     }
     
     // check answer on current trivia and returns result and right answer in tuple
     func checkAnswer(answer: Int) -> (isRight: Bool, rightAnswer: Int) {
+        self.trivias[indexOfCurrentTrivia].isAnswered = true
         questionAsked += 1
-        if (answer == currentTrivia.answer) {
+        if (answer == trivias[indexOfCurrentTrivia].answer) {
             rightAnswers += 1
-            return (true, currentTrivia.answer)
+            return (true, trivias[indexOfCurrentTrivia].answer)
         }
-        return (false, currentTrivia.answer)
+        return (false, trivias[indexOfCurrentTrivia].answer)
     }
     
     func restart() {
         for i in 0..<trivias.count {
             trivias[i].isAnswered = false
+            trivias[i].isAsked = false
         }
-        triviaPool = trivias
         questionAsked = 0
         rightAnswers = 0
     }

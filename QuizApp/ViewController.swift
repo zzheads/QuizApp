@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var quiz = Quiz(
+    let quiz = Quiz(
         trivias: [
             
             Trivia(question: "This was the only US President to serve more than two consecutive terms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson"], answer: 2),
@@ -23,7 +23,16 @@ class ViewController: UIViewController {
             Trivia(question: "Which of the following rivers is longest?", choices: ["Yangtze", "Mississippi", "Congo", "Mekong"], answer: 2),
             Trivia(question: "Which city is the oldest?", choices: ["Mexico City", "Cape Town", "San Juan", "Sydney"], answer: 1),
             Trivia(question: "Which country was the first to allow women to vote in national elections?", choices: ["Poland", "United States", "Sweden", "Senegal"], answer: 1),
-            Trivia(question: "Which of these countries won the most medals in the 2012 Summer Games?", choices: ["France", "Germany", "Japan", "Great Britian"], answer: 4)
+            Trivia(question: "Which of these countries won the most medals in the 2012 Summer Games?", choices: ["France", "Germany", "Japan", "Great Britian"], answer: 4),
+            Trivia(question: "If you're short of a plot, why not brush up your Shakespeare? Which of these musicals was NOT inspired by a William Shakespeare play?", choices: ["A Funny Thing Happened on the Way to the Forum", "West Side Story", "Kiss Me Kate", "The Boys from Syracuse"], answer: 1),
+            Trivia(question: "George Bernard Shaw's play 'Pygmalion' was itself an updating of a Greek legend. Who transformed it into the musical 'My Fair Lady'?", choices:["Richard Rodgers and Oscar Hammerstein", "Leonard Bernstein and Stephen Sondheim", "John Kander and Fred Ebb", "Alan Jay Lerner and Frederick Loewe"], answer: 4),
+            Trivia(question: "The tale of an orphan boy who wanted more, which musical based on a Charles Dickens novel won an Oscar for Best Picture?", choices: ["Pickwick", "Drood", "Scrooge", "Oliver!"], answer: 4),
+            Trivia(question: "Based on the novel 'Kipps' by H G Wells, which musical tells the tale of a draper's apprentice who inherits, and then loses, a fortune?", choices: ["The Most Happy Fella", "The Threepenny Opera", "Little Me", "Half a Sixpence"], answer: 4),
+            Trivia(question: "'Jeeves', an early Andrew Lloyd Webber musical, was based on stories by which humorous writer, himself a sometime lyricist?", choices: ["P G Wodehouse", "A P Herbert", "T S Eliot", "W S Gilbert"], answer: 1),
+            Trivia(question: "'Nights of Cabiria', winner of the Oscar for Best Foreign Language Film in 1958, is perhaps not the most obvious inspiration for a Broadway show. Directed by Federico Fellini, this tale of an Italian lady of the night and her vain search for love was transplanted to another part of the world for which stage and movie musical?",  choices: ["Miss Saigon", "Irma La Douce", "Sweet Charity", "Cabaret"], answer: 3),
+            Trivia(question: "Comic strips can provide good material for musicals. Which of these cartoon characters is the only one not to see his or her name up in Broadway lights during the 20th century?", choices:["Oor Wullie", "Charlie Brown", "Little Orphan Annie", "Li'l Abner"], answer: 1),
+             Trivia(question: "When you're Stephen Sondheim you can take inspiration from anywhere. Which of these gave him the idea for the musical 'Sunday in the Park with George'?",
+                    choices: ["a French painting", "an Italian opera", "a Russian novel", "a German fairy tale"], answer: 1)
         ],
         numberOfQuestions: 5)
     
@@ -58,7 +67,6 @@ class ViewController: UIViewController {
     func buttonPressed(sender: UIButton) {
         buttonFlash(sender: sender)
         
-        quiz.trivias[quiz.getIndexOfCurrentTrivia()].isAnswered = true
         // pressed button #sender.tag
         // check answer
         let answerGiven = sender.tag + 1
@@ -122,28 +130,28 @@ class ViewController: UIViewController {
     func playNewRound() {
         hideMessage()
         quiz.newRound()
-        questionLabel.text = quiz.currentTrivia.question
-        let numberChoices = quiz.currentTrivia.choices.count
+        questionLabel.text = quiz.getCurrentTrivia().question
+        let numberChoices = quiz.getCurrentTrivia().choices.count
         for i in 0..<numberChoices {
-            let button = makeButton(title: quiz.currentTrivia.choices[i], backgroundColor: buttonBackgroundColor, number: i, numberMax: numberChoices)
+            let button = makeButton(title: quiz.getCurrentTrivia().choices[i], backgroundColor: buttonBackgroundColor, number: i, numberMax: numberChoices)
             buttons.append(button)
             buttons[i].isHidden = false
         }
         hideControlButton()
         
-        let timePerQuestion = 20
-        let timeStartAlert = 10
+        let timePerQuestion = 15
+        let timeStartAlert = 9
         let index = quiz.getIndexOfCurrentTrivia()
         
         for i in (0..<timeStartAlert) {
             DispatchQueue.main.asyncAfter(deadline: (.now() + .seconds(timePerQuestion-timeStartAlert+i))) {
-                if (!self.quiz.trivias[index].isAnswered) {
+                if (self.quiz.trivias[index].isAsked)&&(!self.quiz.trivias[index].isAnswered) {
                     self.showMessage(typeOfMessage: .failure, text: "Left \(Int(timeStartAlert-i)) seconds...")
                 }
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timePerQuestion)) {
-            if (!self.quiz.trivias[index].isAnswered) {
+            if (self.quiz.trivias[index].isAsked)&&(!self.quiz.trivias[index].isAnswered) {
                 self.showMessage(typeOfMessage: .failure, text: "Reseting question")
                 self.quiz.skipQuestion()
                 self.playNewRound()
