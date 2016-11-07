@@ -31,24 +31,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZj-z7-a2r">
-                                <rect key="frame" x="148.5" y="120" width="78" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="tlO-g1-DcB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, that's not it." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elA-Tr-jjv">
-                                <rect key="frame" x="100.5" y="120" width="174.5" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="XX5-Gu-7Fk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-L5-8Un">
                                 <rect key="frame" x="36" y="597" width="303" height="50"/>
                                 <color key="backgroundColor" red="0.0032010520809999999" green="0.57485461240000002" blue="0.52971369030000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,28 +46,33 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, that's not it." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnQ-Eo-ghY">
+                                <rect key="frame" x="113.5" y="120" width="148.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="xBD-l2-rw9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.031548917293548584" green="0.16887250542640686" blue="0.24206548929214478" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="PPs-L5-8Un" secondAttribute="bottom" constant="20" id="3sY-Tw-AOB"/>
                             <constraint firstItem="zXg-Ul-BYg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="5Eq-AY-6FK"/>
-                            <constraint firstItem="elA-Tr-jjv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7oo-Bm-YbO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zXg-Ul-BYg" secondAttribute="trailing" constant="20" id="8mf-rh-dWk"/>
-                            <constraint firstItem="elA-Tr-jjv" firstAttribute="centerX" secondItem="zXg-Ul-BYg" secondAttribute="centerX" id="ATX-9d-TNR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PPs-L5-8Un" secondAttribute="trailing" constant="20" id="GZU-EG-cTz"/>
-                            <constraint firstItem="aZj-z7-a2r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Irw-XL-f2V"/>
-                            <constraint firstItem="elA-Tr-jjv" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="PcF-GE-Zwr"/>
+                            <constraint firstItem="fnQ-Eo-ghY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Izc-8V-6ch"/>
                             <constraint firstItem="PPs-L5-8Un" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="h42-Ms-lq6"/>
+                            <constraint firstItem="fnQ-Eo-ghY" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="rEU-q3-Udn"/>
                             <constraint firstItem="zXg-Ul-BYg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="30" id="u1z-ls-aK5"/>
-                            <constraint firstItem="aZj-z7-a2r" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="yCc-gc-COu"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="controlButton" destination="PPs-L5-8Un" id="IHI-u1-zVn"/>
-                        <outlet property="failureLabel" destination="elA-Tr-jjv" id="3c3-HB-Nju"/>
+                        <outlet property="messageLabel" destination="fnQ-Eo-ghY" id="DmP-o1-Q0b"/>
                         <outlet property="questionLabel" destination="zXg-Ul-BYg" id="oPp-rX-ez1"/>
-                        <outlet property="successLabel" destination="aZj-z7-a2r" id="ecl-kh-DnJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

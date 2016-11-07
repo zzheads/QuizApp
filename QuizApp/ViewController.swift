@@ -36,9 +36,8 @@ class ViewController: UIViewController {
     let grayTitleColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 0.5)
 
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var failureLabel: UILabel!
-    @IBOutlet weak var successLabel: UILabel!
     @IBOutlet weak var controlButton: UIButton!
+    @IBOutlet weak var messageLabel: UILabel!
     
     var buttons: [UIButton] = []
     let delayInSeconds = 2 // delay when checking answer / showing right one
@@ -65,10 +64,10 @@ class ViewController: UIViewController {
     
         let result = quiz.checkAnswer(answer: answerGiven)
         if result.isRight {
-            successLabel.isHidden = false
+            showMessage(typeOfMessage: .success)
             soundSuccess.play()
         } else {
-            failureLabel.isHidden = false
+            showMessage(typeOfMessage: .failure)
             soundFailure.play()
         }
         for i in 0..<buttons.count {
@@ -120,9 +119,7 @@ class ViewController: UIViewController {
     }
     
     func playNewRound() {
-        failureLabel.isHidden = true
-        successLabel.isHidden = true
-        
+        hideMessage()
         quiz.newRound()
         questionLabel.text = quiz.currentTrivia.question
         let numberChoices = quiz.currentTrivia.choices.count
@@ -138,16 +135,14 @@ class ViewController: UIViewController {
         
         for i in (0..<timeStartAlert) {
             DispatchQueue.main.asyncAfter(deadline: (.now() + .seconds(timePerQuestion-timeStartAlert+i))) {
-                self.failureLabel.text = "Left \(Int(timeStartAlert-i)) seconds..."
-                self.failureLabel.isHidden = false
+                self.showMessage(typeOfMessage: .failure, text: "Left \(Int(timeStartAlert-i)) seconds...")
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timePerQuestion)) {
-            self.failureLabel.text = "Reseting question"
-            self.failureLabel.isHidden = false
+            self.showMessage(typeOfMessage: .failure, text: "Reseting question")
             self.quiz.skipQuestion()
             self.playNewRound()
-            self.failureLabel.text = "Sorry, that's not it."
+            self.showMessage(typeOfMessage: .failure)
         }
         
     }
@@ -166,8 +161,7 @@ class ViewController: UIViewController {
         }
         buttons.removeAll()
         
-        failureLabel.isHidden = true
-        successLabel.isHidden = true
+        hideMessage()
         
         if quiz.questionAsked < quiz.numberOfQuestions {
             playNewRound()
@@ -200,6 +194,31 @@ class ViewController: UIViewController {
         controlButton.removeTarget(self, action: #selector(playAgainPressed(sender:)), for: .touchUpInside)
         controlButton.isEnabled = false
         controlButton.isHidden = true
+    }
+    
+    
+    enum TypeOfMessage: String {
+        case success = "Correct."
+        case failure = "Sorry, that's not it."
+    }
+    
+    func showMessage(typeOfMessage: TypeOfMessage, text: String? = nil) {
+        let failureColor = UIColor(red: 255/255.0, green: 128/255.0, blue: 0/255.0, alpha: 1.0)
+        let successColor = UIColor(red: 0/255.0, green: 128/255.0, blue: 64/255.0, alpha: 1.0)
+        switch typeOfMessage {
+            case .success: messageLabel.textColor = successColor
+            case .failure: messageLabel.textColor = failureColor
+        }
+        if text == nil {
+            messageLabel.text = typeOfMessage.rawValue
+        } else {
+            messageLabel.text = text
+        }
+        messageLabel.isHidden = false
+    }
+    
+    func hideMessage() {
+        messageLabel.isHidden = true
     }
     
 }
