@@ -36,6 +36,11 @@ class ViewController: UIViewController {
         ],
         numberOfQuestions: 5)
     
+    enum GameMode: String {
+        case standart = "Standart"
+        case maths = "Maths"
+    }
+    
     let soundStart = Sound(name: "start")
     let soundCompleted = Sound(name: "gameover")
     let soundSuccess = Sound(name: "success")
@@ -43,10 +48,16 @@ class ViewController: UIViewController {
     let buttonBackgroundColor = UIColor(red: 10/255.0, green: 121/255.0, blue: 150/255.0, alpha: 1.0)
     let playAgainBackgroundColor = UIColor(red: 1/255.0, green: 147/255.0, blue: 135/255.0, alpha: 1.0)
     let grayTitleColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 0.5)
-
+    var gameMode: GameMode?
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var controlButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var Label1: UILabel!
+    @IBOutlet weak var Label2: UILabel!
+    @IBOutlet weak var modeSwitch: UISwitch!
+    @IBOutlet weak var startButton: UIButton!
     
     var buttons: [UIButton] = []
     let delayInSeconds = 2 // delay when checking answer / showing right one
@@ -56,12 +67,39 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         soundStart.play()
-        playNewRound()
+        selectGameMode()
+        //playNewRound()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func selectGameMode() {
+        questionLabel.isHidden = true
+        controlButton.isHidden = true
+        messageLabel.isHidden = true
+        startButton.addTarget(self, action: #selector(startPressed(sender:)), for: .touchUpInside)
+    }
+    
+    func startPressed(sender: UIButton) {
+        switch modeSwitch.isOn {
+        case true: gameMode = .maths
+        case false: gameMode = .standart
+        }
+        showMessage(typeOfMessage: .success, text: "Starting game in \(gameMode?.rawValue) mode... ")
+        titleLabel.isHidden = true
+        Label1.isHidden = true
+        Label2.isHidden = true
+        modeSwitch.isHidden = true
+        startButton.isHidden = true
+        titleLabel.removeFromSuperview()
+        Label1.removeFromSuperview()
+        Label2.removeFromSuperview()
+        modeSwitch.removeFromSuperview()
+        startButton.removeFromSuperview()
+        playNewRound()
     }
     
     func buttonPressed(sender: UIButton) {
@@ -129,6 +167,7 @@ class ViewController: UIViewController {
     
     func playNewRound() {
         hideMessage()
+        questionLabel.isHidden = false
         quiz.newRound()
         questionLabel.text = quiz.getCurrentTrivia().question
         let numberChoices = quiz.getCurrentTrivia().choices.count
