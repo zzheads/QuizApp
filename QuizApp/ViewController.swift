@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let quiz = Quiz(
+    var quiz = Quiz(
         trivias: [
             
             Trivia(question: "This was the only US President to serve more than two consecutive terms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson"], answer: 2),
-            Trivia(question: "This was the only US President to serve more than two consecutive terms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson", "Andrew Jackson"], answer: 2),
+            Trivia(question: "This was the only US President to serve more than two consecutive varms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson", "Andrew Jackson"], answer: 2),
             Trivia(question: "Which of the following countries has the most residents?", choices: ["Nigeria", "Russia", "Iran", "Vietnam"], answer: 1),
             Trivia(question: "In what year was the United Nations founded?", choices: ["1918", "1919", "1945", "1954"], answer: 3),
             Trivia(question: "The Titanic departed from the United Kingdom, where was it supposed to arrive?", choices: ["Paris", "Washington D.C.", "New York City", "Boston"], answer: 3),
@@ -58,6 +58,7 @@ class ViewController: UIViewController {
     func buttonPressed(sender: UIButton) {
         buttonFlash(sender: sender)
         
+        quiz.trivias[quiz.getIndexOfCurrentTrivia()].isAnswered = true
         // pressed button #sender.tag
         // check answer
         let answerGiven = sender.tag + 1
@@ -132,17 +133,22 @@ class ViewController: UIViewController {
         
         let timePerQuestion = 20
         let timeStartAlert = 10
+        let index = quiz.getIndexOfCurrentTrivia()
         
         for i in (0..<timeStartAlert) {
             DispatchQueue.main.asyncAfter(deadline: (.now() + .seconds(timePerQuestion-timeStartAlert+i))) {
-                self.showMessage(typeOfMessage: .failure, text: "Left \(Int(timeStartAlert-i)) seconds...")
+                if (!self.quiz.trivias[index].isAnswered) {
+                    self.showMessage(typeOfMessage: .failure, text: "Left \(Int(timeStartAlert-i)) seconds...")
+                }
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timePerQuestion)) {
-            self.showMessage(typeOfMessage: .failure, text: "Reseting question")
-            self.quiz.skipQuestion()
-            self.playNewRound()
-            self.showMessage(typeOfMessage: .failure)
+            if (!self.quiz.trivias[index].isAnswered) {
+                self.showMessage(typeOfMessage: .failure, text: "Reseting question")
+                self.quiz.skipQuestion()
+                self.playNewRound()
+                self.showMessage(typeOfMessage: .failure)
+            }
         }
         
     }
