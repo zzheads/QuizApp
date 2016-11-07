@@ -132,6 +132,24 @@ class ViewController: UIViewController {
             buttons[i].isHidden = false
         }
         hideControlButton()
+        
+        let timePerQuestion = 20
+        let timeStartAlert = 10
+        
+        for i in (0..<timeStartAlert) {
+            DispatchQueue.main.asyncAfter(deadline: (.now() + .seconds(timePerQuestion-timeStartAlert+i))) {
+                self.failureLabel.text = "Left \(Int(timeStartAlert-i)) seconds..."
+                self.failureLabel.isHidden = false
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timePerQuestion)) {
+            self.failureLabel.text = "Reseting question"
+            self.failureLabel.isHidden = false
+            self.quiz.skipQuestion()
+            self.playNewRound()
+            self.failureLabel.text = "Sorry, that's not it."
+        }
+        
     }
     
     func playAgainPressed(sender: UIButton) {

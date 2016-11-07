@@ -41,6 +41,11 @@ class Quiz {
         return (questionAsked >= numberOfQuestions)
     }
     
+    //skip question
+    func skipQuestion() {
+        questionAsked += 1
+    }
+    
     // check answer on current trivia and returns result and right answer in tuple
     func checkAnswer(answer: Int) -> (isRight: Bool, rightAnswer: Int) {
         questionAsked += 1
