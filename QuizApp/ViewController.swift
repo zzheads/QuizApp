@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     let quiz = Quiz(
         trivias: [
+            
+            Trivia(question: "This was the only US President to serve more than two consecutive terms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson"], answer: 2),
             Trivia(question: "This was the only US President to serve more than two consecutive terms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson", "Andrew Jackson"], answer: 2),
             Trivia(question: "Which of the following countries has the most residents?", choices: ["Nigeria", "Russia", "Iran", "Vietnam"], answer: 1),
             Trivia(question: "In what year was the United Nations founded?", choices: ["1918", "1919", "1945", "1954"], answer: 3),
@@ -26,124 +28,78 @@ class ViewController: UIViewController {
         numberOfQuestions: 5)
     
     let soundStart = Sound(name: "start")
-    let soundCompleted = Sound(name: "completed")
+    let soundCompleted = Sound(name: "gameover")
     let soundSuccess = Sound(name: "success")
     let soundFailure = Sound(name: "failure")
+    let buttonBackgroundColor = UIColor(red: 10/255.0, green: 121/255.0, blue: 150/255.0, alpha: 1.0)
+    let playAgainBackgroundColor = UIColor(red: 1/255.0, green: 147/255.0, blue: 135/255.0, alpha: 1.0)
+    let grayTitleColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 0.5)
 
     @IBOutlet weak var questionLabel: UILabel!
-    
-    @IBOutlet weak var choiceButton1: UIButton!
-    @IBOutlet weak var choiceButton2: UIButton!
-    @IBOutlet weak var choiceButton3: UIButton!
-    @IBOutlet weak var choiceButton4: UIButton!
+    @IBOutlet weak var failureLabel: UILabel!
+    @IBOutlet weak var successLabel: UILabel!
+    @IBOutlet weak var controlButton: UIButton!
     
     var buttons: [UIButton] = []
     let delayInSeconds = 2 // delay when checking answer / showing right one
-    
-    @IBOutlet weak var playAgainButton: UIButton!
-    @IBOutlet weak var quitButton: UIButton!
-    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        playAgainButton.isHidden = true
-        quitButton.isHidden = true
         
-        buttons.append(choiceButton1)
-        buttons.append(choiceButton2)
-        buttons.append(choiceButton3)
-        buttons.append(choiceButton4)
-        
-        runNextRound()
+        soundStart.play()
+        playNewRound()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
-    func runNextRound() {
-        quiz.newRound()
-        questionLabel.text = quiz.currentTrivia.question
-        choiceButton1.setTitle(quiz.currentTrivia.choices[0], for: UIControlState.normal)
-        choiceButton2.setTitle(quiz.currentTrivia.choices[1], for: UIControlState.normal)
-        choiceButton3.setTitle(quiz.currentTrivia.choices[2], for: UIControlState.normal)
-        choiceButton4.setTitle(quiz.currentTrivia.choices[3], for: UIControlState.normal)
-    }
+    func buttonPressed(sender: UIButton) {
+        buttonFlash(sender: sender)
+        
+        // pressed button #sender.tag
+        // check answer
+        let answerGiven = sender.tag + 1
     
-    func showResults() {
-        questionLabel.text = " Questions asked: \(quiz.questionAsked),\n Right answers received: \(quiz.rightAnswers)"
-        for button in buttons {
-            button.isHidden = true
-        }
-        playAgainButton.isHidden = false
-        quitButton.isHidden = false
-        soundCompleted.play()
-    }
-    
-    func checkAnswer(answer: Int) {
-        let result = quiz.checkAnswer(answer: answer)
-        buttonFlash(sender: buttons[result.rightAnswer-1])
-        if (!result.isRight) { // we gave wrong answer, lets show right one
-            soundFailure.play()
-        } else {
+        let result = quiz.checkAnswer(answer: answerGiven)
+        if result.isRight {
+            successLabel.isHidden = false
             soundSuccess.play()
+        } else {
+            failureLabel.isHidden = false
+            soundFailure.play()
         }
-    }
-    
-    @IBAction func playAgain(_ sender: Any) {
-        quiz.restart()
-        playAgainButton.isHidden = true
-        quitButton.isHidden = true
-        for button in buttons {
-            button.isHidden = false
+        for i in 0..<buttons.count {
+            if i != (result.rightAnswer - 1) {
+                buttons[i].setTitleColor(grayTitleColor, for: .normal)
+            }
         }
-        runNextRound()
-        soundStart.play()
+        showNextQuestionButton()
     }
     
-    @IBAction func quitApp(_ sender: Any) {
-        exit(0)
-    }
-    
+    func makeButton(title: String, backgroundColor: UIColor, number: Int, numberMax: Int) -> UIButton {
+        let yStart = 160//Int(successLabel.bounds.maxY + 20) // Y coord of start rect holding buttons
+        let yEnd = Int(UIScreen.main.bounds.height - 90) // end Y coord of the rect
+        let heightButtonWithMargin = (yEnd-yStart)/numberMax
+        let widthOfButtons = Int(UIScreen.main.bounds.width) - 80
+        let yStartButton = yStart + number * heightButtonWithMargin
+        
+        let button = UIButton(type: .system)
+        button.frame = CGRect(x: 40, y: yStartButton, width: widthOfButtons, height: 50)
+        button.backgroundColor = backgroundColor
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.setTitle(title, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 17.0)
+        button.tag = number
+        button.addTarget(self, action: #selector(buttonPressed(sender:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(button)
 
-    @IBAction func choice1(_ sender: Any) {
-        checkAnswer(answer: 1)
-        if (!quiz.isFinished()) {
-            runNextRound()
-        } else {
-            showResults()
-        }
+        return button
     }
-    
-    @IBAction func choice2(_ sender: Any) {
-        checkAnswer(answer: 2)
-        if (!quiz.isFinished()) {
-            runNextRound()
-        } else {
-            showResults()
-        }
-    }
-    
-    @IBAction func choice3(_ sender: Any) {
-        checkAnswer(answer: 3)
-        if (!quiz.isFinished()) {
-            runNextRound()
-        } else {
-            showResults()
-        }
-    }
-    
-    @IBAction func choice4(_ sender: Any) {
-        checkAnswer(answer: 4)
-        if (!quiz.isFinished()) {
-            runNextRound()
-        } else {
-            showResults()
-        }
-    }
-    
+        
     func buttonFlash(sender: UIButton) {
         let bounds = sender.bounds
         UIView.animate(
@@ -161,6 +117,71 @@ class ViewController: UIViewController {
         
         sender.bounds = CGRect(x: Double(bounds.origin.x), y: Double(bounds.origin.y), width: Double(bounds.size.width), height: Double(bounds.size.height))
         sender.isEnabled = true
+    }
+    
+    func playNewRound() {
+        failureLabel.isHidden = true
+        successLabel.isHidden = true
+        
+        quiz.newRound()
+        questionLabel.text = quiz.currentTrivia.question
+        let numberChoices = quiz.currentTrivia.choices.count
+        for i in 0..<numberChoices {
+            let button = makeButton(title: quiz.currentTrivia.choices[i], backgroundColor: buttonBackgroundColor, number: i, numberMax: numberChoices)
+            buttons.append(button)
+            buttons[i].isHidden = false
+        }
+        hideControlButton()
+    }
+    
+    func playAgainPressed(sender: UIButton) {
+        quiz.restart()
+        hideControlButton()
+        soundStart.play()
+        playNewRound()
+    }
+    
+    func nextQuestionPressed(sender: UIButton) {
+        for button in buttons {
+            button.removeFromSuperview()
+            button.isHidden = true
+        }
+        buttons.removeAll()
+        
+        failureLabel.isHidden = true
+        successLabel.isHidden = true
+        
+        if quiz.questionAsked < quiz.numberOfQuestions {
+            playNewRound()
+        } else {
+            // Game Over
+            showPlayAgainButton()
+            questionLabel.text = "You gave \(quiz.rightAnswers)/\(quiz.questionAsked) right answers!"
+            soundCompleted.play()
+        }
+    }
+    
+    func showNextQuestionButton() {
+        controlButton.setTitle("Next question", for: .normal)
+        controlButton.removeTarget(self, action: #selector(playAgainPressed(sender:)), for: .touchUpInside)
+        controlButton.addTarget(self, action: #selector(nextQuestionPressed(sender:)), for: .touchUpInside)
+        controlButton.isEnabled = true
+        controlButton.isHidden = false
+    }
+    
+    func showPlayAgainButton() {
+        controlButton.setTitle("Play again?", for: .normal)
+        controlButton.removeTarget(self, action: #selector(nextQuestionPressed(sender:)), for: .touchUpInside)
+        controlButton.addTarget(self, action: #selector(playAgainPressed(sender:)), for: .touchUpInside)
+        controlButton.isEnabled = true
+        controlButton.isHidden = false
+    }
+    
+    func hideControlButton() {
+        controlButton.removeTarget(self, action: #selector(nextQuestionPressed(sender:)), for: .touchUpInside)
+        controlButton.removeTarget(self, action: #selector(playAgainPressed(sender:)), for: .touchUpInside)
+        controlButton.isEnabled = false
+        controlButton.isHidden = true
     }
     
 }

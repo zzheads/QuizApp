@@ -22,124 +22,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFV-Np-71g">
-                                <rect key="frame" x="36" y="248" width="303" height="50"/>
-                                <color key="backgroundColor" red="0.039215686270000001" green="0.47450980390000003" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample question Sample question Sample question Sample question Sample question Sample question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-Ul-BYg">
+                                <rect key="frame" x="36" y="30" width="303" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="fDL-rB-klP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Choice 1"/>
-                                <connections>
-                                    <action selector="choice1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guS-hh-6GY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dm4-Sj-boZ">
-                                <rect key="frame" x="36" y="368" width="303" height="50"/>
-                                <color key="backgroundColor" red="0.040373869239999999" green="0.47578203679999997" blue="0.58944773669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="6aT-NJ-iAB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Choice 3"/>
-                                <connections>
-                                    <action selector="choice3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lQC-Au-2m3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prc-J5-wuN">
-                                <rect key="frame" x="36" y="428" width="303" height="50"/>
-                                <color key="backgroundColor" red="0.040373869239999999" green="0.47578203679999997" blue="0.58944773669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="PUW-fg-I3A"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="zb8-Y4-8YC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Choice 4"/>
-                                <connections>
-                                    <action selector="choice4:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Ht-SB-kCt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-bd-3Fb">
-                                <rect key="frame" x="36" y="488" width="303" height="50"/>
-                                <color key="backgroundColor" red="0.0032010520808398724" green="0.57485461235046387" blue="0.52971369028091431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0v8-PW-M5A"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Play again?"/>
-                                <connections>
-                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="84u-Qj-ufm"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNu-Ca-PNA">
-                                <rect key="frame" x="36" y="308" width="303" height="50"/>
-                                <color key="backgroundColor" red="0.040373869239999999" green="0.47578203679999997" blue="0.58944773669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="iOa-g1-nfT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Choice 2"/>
-                                <connections>
-                                    <action selector="choice2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5gS-VF-XfL"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample question Sample question Sample question Sample question Sample question Sample question" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXg-Ul-BYg">
-                                <rect key="frame" x="20" y="128" width="335" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="4xE-YK-Ibb"/>
+                                    <constraint firstAttribute="height" constant="70" id="t3F-30-M0w"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwa-oR-9h9">
-                                <rect key="frame" x="36" y="548" width="303" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZj-z7-a2r">
+                                <rect key="frame" x="148.5" y="120" width="78" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="p8f-9z-JBd"/>
+                                    <constraint firstAttribute="height" constant="25" id="tlO-g1-DcB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="Quit app"/>
-                                <connections>
-                                    <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UZF-g8-Tlf"/>
-                                    <action selector="quitApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NPf-L2-vqH"/>
-                                </connections>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, that's not it." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elA-Tr-jjv">
+                                <rect key="frame" x="100.5" y="120" width="174.5" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="XX5-Gu-7Fk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPs-L5-8Un">
+                                <rect key="frame" x="36" y="597" width="303" height="50"/>
+                                <color key="backgroundColor" red="0.0032010520809999999" green="0.57485461240000002" blue="0.52971369030000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="r0s-9f-Z2U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
+                                <state key="normal" title="Next question"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBound" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.031548917293548584" green="0.16887250542640686" blue="0.24206548929214478" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="HNu-Ca-PNA" secondAttribute="trailing" constant="20" id="80e-c6-I87"/>
-                            <constraint firstItem="pwa-oR-9h9" firstAttribute="top" secondItem="tsn-bd-3Fb" secondAttribute="bottom" constant="10" id="BWf-LE-S8f"/>
-                            <constraint firstItem="tsn-bd-3Fb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Cwf-Ei-ejz"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="prc-J5-wuN" secondAttribute="trailing" constant="20" id="EO6-TT-2t5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pwa-oR-9h9" secondAttribute="trailing" constant="20" id="FTX-sT-DEI"/>
-                            <constraint firstItem="HNu-Ca-PNA" firstAttribute="top" secondItem="YFV-Np-71g" secondAttribute="bottom" constant="10" id="FiB-pN-pDI"/>
-                            <constraint firstItem="HNu-Ca-PNA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M6w-j7-C5d"/>
-                            <constraint firstItem="prc-J5-wuN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Npx-Z8-gIR"/>
-                            <constraint firstItem="HNu-Ca-PNA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="XAN-jq-euk"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YFV-Np-71g" secondAttribute="trailing" constant="20" id="Yso-Bp-2Ky"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dm4-Sj-boZ" secondAttribute="trailing" constant="20" id="ZiT-kW-9Gf"/>
-                            <constraint firstItem="prc-J5-wuN" firstAttribute="top" secondItem="dm4-Sj-boZ" secondAttribute="bottom" constant="10" id="anM-SS-1Kz"/>
-                            <constraint firstItem="YFV-Np-71g" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="asH-ao-bC1"/>
-                            <constraint firstItem="pwa-oR-9h9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="dce-SL-GaX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tsn-bd-3Fb" secondAttribute="trailing" constant="20" id="gL4-HN-W6W"/>
-                            <constraint firstItem="tsn-bd-3Fb" firstAttribute="top" secondItem="prc-J5-wuN" secondAttribute="bottom" constant="10" id="jan-eh-gc4"/>
-                            <constraint firstItem="YFV-Np-71g" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="l4V-d3-AyA"/>
-                            <constraint firstItem="zXg-Ul-BYg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="nee-f9-ovp"/>
-                            <constraint firstItem="dm4-Sj-boZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="sV2-T6-5a2"/>
-                            <constraint firstAttribute="trailing" secondItem="zXg-Ul-BYg" secondAttribute="trailing" constant="20" id="uXl-fl-T0g"/>
-                            <constraint firstItem="dm4-Sj-boZ" firstAttribute="top" secondItem="HNu-Ca-PNA" secondAttribute="bottom" constant="10" id="zN0-NZ-uA9"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="PPs-L5-8Un" secondAttribute="bottom" constant="20" id="3sY-Tw-AOB"/>
+                            <constraint firstItem="zXg-Ul-BYg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="5Eq-AY-6FK"/>
+                            <constraint firstItem="elA-Tr-jjv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7oo-Bm-YbO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zXg-Ul-BYg" secondAttribute="trailing" constant="20" id="8mf-rh-dWk"/>
+                            <constraint firstItem="elA-Tr-jjv" firstAttribute="centerX" secondItem="zXg-Ul-BYg" secondAttribute="centerX" id="ATX-9d-TNR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PPs-L5-8Un" secondAttribute="trailing" constant="20" id="GZU-EG-cTz"/>
+                            <constraint firstItem="aZj-z7-a2r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Irw-XL-f2V"/>
+                            <constraint firstItem="elA-Tr-jjv" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="PcF-GE-Zwr"/>
+                            <constraint firstItem="PPs-L5-8Un" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="h42-Ms-lq6"/>
+                            <constraint firstItem="zXg-Ul-BYg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="30" id="u1z-ls-aK5"/>
+                            <constraint firstItem="aZj-z7-a2r" firstAttribute="top" secondItem="zXg-Ul-BYg" secondAttribute="bottom" constant="20" id="yCc-gc-COu"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="choiceButton1" destination="YFV-Np-71g" id="X2n-Fs-Kub"/>
-                        <outlet property="choiceButton2" destination="HNu-Ca-PNA" id="iZ6-Oq-T6i"/>
-                        <outlet property="choiceButton3" destination="dm4-Sj-boZ" id="Gnk-oz-9kl"/>
-                        <outlet property="choiceButton4" destination="prc-J5-wuN" id="Sg5-fn-f5Q"/>
-                        <outlet property="playAgainButton" destination="tsn-bd-3Fb" id="x3c-nM-2oO"/>
+                        <outlet property="controlButton" destination="PPs-L5-8Un" id="IHI-u1-zVn"/>
+                        <outlet property="failureLabel" destination="elA-Tr-jjv" id="3c3-HB-Nju"/>
                         <outlet property="questionLabel" destination="zXg-Ul-BYg" id="oPp-rX-ez1"/>
-                        <outlet property="quitButton" destination="pwa-oR-9h9" id="OpA-mJ-jOz"/>
+                        <outlet property="successLabel" destination="aZj-z7-a2r" id="ecl-kh-DnJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
