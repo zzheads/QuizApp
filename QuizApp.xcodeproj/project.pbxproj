@@ -20,6 +20,8 @@
 		A65EDD3F1DD0928700EF26CA /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD3B1DD0928700EF26CA /* gameover.wav */; };
 		A65EDD401DD0928700EF26CA /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD3C1DD0928700EF26CA /* start.wav */; };
 		A65EDD411DD0928700EF26CA /* success.wav in Resources */ = {isa = PBXBuildFile; fileRef = A65EDD3D1DD0928700EF26CA /* success.wav */; };
+		A65EDD431DD154AE00EF26CA /* MathTrivia.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EDD421DD154AE00EF26CA /* MathTrivia.swift */; };
+		A65EDD451DD1B92A00EF26CA /* GameQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EDD441DD1B92A00EF26CA /* GameQuiz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		A65EDD3B1DD0928700EF26CA /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gameover.wav; path = Assets.xcassets/Sounds/gameover.wav; sourceTree = "<group>"; };
 		A65EDD3C1DD0928700EF26CA /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = start.wav; path = Assets.xcassets/Sounds/start.wav; sourceTree = "<group>"; };
 		A65EDD3D1DD0928700EF26CA /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = success.wav; path = Assets.xcassets/Sounds/success.wav; sourceTree = "<group>"; };
+		A65EDD421DD154AE00EF26CA /* MathTrivia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathTrivia.swift; sourceTree = "<group>"; };
+		A65EDD441DD1B92A00EF26CA /* GameQuiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameQuiz.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,8 @@
 				A65EDD081DCDCF5300EF26CA /* Info.plist */,
 				A65EDD341DCE012900EF26CA /* Sounds.swift */,
 				A65EDD361DCE062800EF26CA /* Quiz.swift */,
+				A65EDD421DD154AE00EF26CA /* MathTrivia.swift */,
+				A65EDD441DD1B92A00EF26CA /* GameQuiz.swift */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -284,7 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65EDD431DD154AE00EF26CA /* MathTrivia.swift in Sources */,
 				A65EDD351DCE012900EF26CA /* Sounds.swift in Sources */,
+				A65EDD451DD1B92A00EF26CA /* GameQuiz.swift in Sources */,
 				A65EDCFF1DCDCF5300EF26CA /* ViewController.swift in Sources */,
 				A65EDD371DCE062800EF26CA /* Quiz.swift in Sources */,
 				A65EDCFD1DCDCF5300EF26CA /* AppDelegate.swift in Sources */,

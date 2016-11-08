@@ -10,37 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let quiz = Quiz(
-        trivias: [
-            
-            Trivia(question: "This was the only US President to serve more than two consecutive terms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson"], answer: 2),
-            Trivia(question: "This was the only US President to serve more than two consecutive varms.", choices: ["George Washington", "Franklin D. Roosevelt", "Woodrow Wilson", "Andrew Jackson"], answer: 2),
-            Trivia(question: "Which of the following countries has the most residents?", choices: ["Nigeria", "Russia", "Iran", "Vietnam"], answer: 1),
-            Trivia(question: "In what year was the United Nations founded?", choices: ["1918", "1919", "1945", "1954"], answer: 3),
-            Trivia(question: "The Titanic departed from the United Kingdom, where was it supposed to arrive?", choices: ["Paris", "Washington D.C.", "New York City", "Boston"], answer: 3),
-            Trivia(question: "Which nation produces the most oil?", choices: ["Iran", "Iraq", "Brazil", "Canada"], answer: 4),
-            Trivia(question: "Which country has most recently won consecutive World Cups in Soccer?", choices: ["Italy", "Brazil", "Argetina", "Spain"], answer: 2),
-            Trivia(question: "Which of the following rivers is longest?", choices: ["Yangtze", "Mississippi", "Congo", "Mekong"], answer: 2),
-            Trivia(question: "Which city is the oldest?", choices: ["Mexico City", "Cape Town", "San Juan", "Sydney"], answer: 1),
-            Trivia(question: "Which country was the first to allow women to vote in national elections?", choices: ["Poland", "United States", "Sweden", "Senegal"], answer: 1),
-            Trivia(question: "Which of these countries won the most medals in the 2012 Summer Games?", choices: ["France", "Germany", "Japan", "Great Britian"], answer: 4),
-            Trivia(question: "If you're short of a plot, why not brush up your Shakespeare? Which of these musicals was NOT inspired by a William Shakespeare play?", choices: ["A Funny Thing Happened on the Way to the Forum", "West Side Story", "Kiss Me Kate", "The Boys from Syracuse"], answer: 1),
-            Trivia(question: "George Bernard Shaw's play 'Pygmalion' was itself an updating of a Greek legend. Who transformed it into the musical 'My Fair Lady'?", choices:["Richard Rodgers and Oscar Hammerstein", "Leonard Bernstein and Stephen Sondheim", "John Kander and Fred Ebb", "Alan Jay Lerner and Frederick Loewe"], answer: 4),
-            Trivia(question: "The tale of an orphan boy who wanted more, which musical based on a Charles Dickens novel won an Oscar for Best Picture?", choices: ["Pickwick", "Drood", "Scrooge", "Oliver!"], answer: 4),
-            Trivia(question: "Based on the novel 'Kipps' by H G Wells, which musical tells the tale of a draper's apprentice who inherits, and then loses, a fortune?", choices: ["The Most Happy Fella", "The Threepenny Opera", "Little Me", "Half a Sixpence"], answer: 4),
-            Trivia(question: "'Jeeves', an early Andrew Lloyd Webber musical, was based on stories by which humorous writer, himself a sometime lyricist?", choices: ["P G Wodehouse", "A P Herbert", "T S Eliot", "W S Gilbert"], answer: 1),
-            Trivia(question: "'Nights of Cabiria', winner of the Oscar for Best Foreign Language Film in 1958, is perhaps not the most obvious inspiration for a Broadway show. Directed by Federico Fellini, this tale of an Italian lady of the night and her vain search for love was transplanted to another part of the world for which stage and movie musical?",  choices: ["Miss Saigon", "Irma La Douce", "Sweet Charity", "Cabaret"], answer: 3),
-            Trivia(question: "Comic strips can provide good material for musicals. Which of these cartoon characters is the only one not to see his or her name up in Broadway lights during the 20th century?", choices:["Oor Wullie", "Charlie Brown", "Little Orphan Annie", "Li'l Abner"], answer: 1),
-             Trivia(question: "When you're Stephen Sondheim you can take inspiration from anywhere. Which of these gave him the idea for the musical 'Sunday in the Park with George'?",
-                    choices: ["a French painting", "an Italian opera", "a Russian novel", "a German fairy tale"], answer: 1)
-        ],
-        numberOfQuestions: 5)
-    
-    enum GameMode: String {
-        case standart = "Standart"
-        case maths = "Maths"
-    }
-    
     let soundStart = Sound(name: "start")
     let soundCompleted = Sound(name: "gameover")
     let soundSuccess = Sound(name: "success")
@@ -48,7 +17,7 @@ class ViewController: UIViewController {
     let buttonBackgroundColor = UIColor(red: 10/255.0, green: 121/255.0, blue: 150/255.0, alpha: 1.0)
     let playAgainBackgroundColor = UIColor(red: 1/255.0, green: 147/255.0, blue: 135/255.0, alpha: 1.0)
     let grayTitleColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 0.5)
-    var gameMode: GameMode?
+    var gameQuizOrNil: GameQuiz? = nil
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var controlButton: UIButton!
@@ -85,10 +54,13 @@ class ViewController: UIViewController {
     
     func startPressed(sender: UIButton) {
         switch modeSwitch.isOn {
-        case true: gameMode = .maths
-        case false: gameMode = .standart
+        case true: gameQuizOrNil = GameQuiz(gameMode: .maths)
+        case false: gameQuizOrNil = GameQuiz(gameMode: .standart)
         }
-        showMessage(typeOfMessage: .success, text: "Starting game in \(gameMode?.rawValue) mode... ")
+        guard let gameMode = gameQuizOrNil?.gameMode else {
+            return
+        }
+        showMessage(typeOfMessage: .success, text: "Starting game in \(gameMode.rawValue) mode... ")
         titleLabel.isHidden = true
         Label1.isHidden = true
         Label2.isHidden = true
@@ -103,6 +75,10 @@ class ViewController: UIViewController {
     }
     
     func buttonPressed(sender: UIButton) {
+        guard let quiz = gameQuizOrNil?.getQuiz() else {
+            return
+        }
+
         buttonFlash(sender: sender)
         
         // pressed button #sender.tag
@@ -166,6 +142,9 @@ class ViewController: UIViewController {
     }
     
     func playNewRound() {
+        guard let quiz = gameQuizOrNil?.getQuiz() else {
+            return
+        }
         hideMessage()
         questionLabel.isHidden = false
         quiz.newRound()
@@ -184,15 +163,21 @@ class ViewController: UIViewController {
         
         for i in (0..<timeStartAlert) {
             DispatchQueue.main.asyncAfter(deadline: (.now() + .seconds(timePerQuestion-timeStartAlert+i))) {
-                if (self.quiz.trivias[index].isAsked)&&(!self.quiz.trivias[index].isAnswered) {
+                guard let quiz = self.gameQuizOrNil?.getQuiz() else {
+                    return
+                }
+                if (quiz.trivias[index].isAsked)&&(!quiz.trivias[index].isAnswered) {
                     self.showMessage(typeOfMessage: .failure, text: "Left \(Int(timeStartAlert-i)) seconds...")
                 }
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timePerQuestion)) {
-            if (self.quiz.trivias[index].isAsked)&&(!self.quiz.trivias[index].isAnswered) {
+            guard let quiz = self.gameQuizOrNil?.getQuiz() else {
+                return
+            }
+            if (quiz.trivias[index].isAsked)&&(!quiz.trivias[index].isAnswered) {
                 self.showMessage(typeOfMessage: .failure, text: "Reseting question")
-                self.quiz.skipQuestion()
+                quiz.skipQuestion()
                 self.playNewRound()
                 self.showMessage(typeOfMessage: .failure)
             }
@@ -201,6 +186,9 @@ class ViewController: UIViewController {
     }
     
     func playAgainPressed(sender: UIButton) {
+        guard let quiz = gameQuizOrNil?.getQuiz() else {
+            return
+        }
         quiz.restart()
         hideControlButton()
         soundStart.play()
@@ -208,6 +196,10 @@ class ViewController: UIViewController {
     }
     
     func nextQuestionPressed(sender: UIButton) {
+        guard let quiz = gameQuizOrNil?.getQuiz() else {
+            return
+        }
+        
         for button in buttons {
             button.removeFromSuperview()
             button.isHidden = true
